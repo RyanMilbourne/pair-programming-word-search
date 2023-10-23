@@ -1,6 +1,6 @@
 const wordSearch = (array, word) => {
 
-  // this will be our final verdict (it will either be true or false)
+  // this will be our final verdict
   let finalVerdict;
 
   // if the wordsearch (array) is empty, return false
@@ -13,6 +13,7 @@ const wordSearch = (array, word) => {
   }
   // if word is or has lowercase, convert to all upercase
   word = word.toUpperCase();
+
   // this converts horizontal lines to strings
   const horizontalJoin = array.map(ls => ls.join(''));
 
@@ -20,12 +21,11 @@ const wordSearch = (array, word) => {
   const verticalJoin = [];
   // determine how many columns (array.length) there should be
   const columns = array[0].length;
-
-  // loop through each "column" to create our vertical arrays (similar to "ther is no spoon exercise")
+  // loop through each "column" to create our vertical arrays (similar to "there is no spoon exercise")
   for (let col = 0; col < columns; col++) {
-    // establish where our new characters will be assigned to
+    // establish where our new string
     let newString = '';
-    // now loop through each row, using the 'col' value to determine which character gets assigned to newString
+    // loop through each row, using the 'col' value to determine which character gets assigned to newString
     for (let row = 0; row < array.length; row++) {
       newString += array[row][col];
     }
@@ -36,14 +36,14 @@ const wordSearch = (array, word) => {
   for (const l of horizontalJoin) {
     if (l.includes(word)) {
       finalVerdict = true;
-    } // don't add else = false
+    }
   }
 
   // compare if word exists in vertical line (now new arrays)
   for (const l of verticalJoin) {
     if (l.includes(word)) {
       finalVerdict = true;
-    } // don't add else = false
+    }
   }
 
   // we check that finalVerdict = true. if so, return true... if not, return false (as per npm test requirements)
